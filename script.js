@@ -4,6 +4,8 @@
     const navLinks = document.querySelectorAll('.nav a');
 
     function showOverlay(text = "", ms = 500) {
+        if (!overlay || !msg) return Promise.resolve();
+
         msg.textContent = text;
         overlay.classList.add('show');
         return new Promise(resolve => setTimeout(() => {
@@ -55,13 +57,21 @@
 
     function routeFor(el) {
         const href = (el.getAttribute('href') || "").toLowerCase();
-        if (href === "/" || href.endsWith("/index.html") || el.classList.contains('active')) return "about";
+
         if (href.includes("fake-it")) return "fake";
         if (href.includes("glance-back")) return "glance";
         if (href.includes("realistic-day")) return "realistic";
+
+        if (href === "/" || href === "./" || href === "../") return "about";
+        if (/(^|\/)index\.html$/.test(href) &&
+            !href.includes("fake-it") &&
+            !href.includes("glance-back") &&
+            !href.includes("realistic-day")) {
+            return "about";
+        }
+
         return "default";
     }
-
     navLinks.forEach(a => {
         a.addEventListener('click', async (e) => {
             if (isModifiedClick(e)) return;

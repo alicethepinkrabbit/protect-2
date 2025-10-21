@@ -32,13 +32,14 @@ a {
     padding: 25px;
     border-right: 1px solid #e6e6e6;
     background: #fff;
+    overflow: visible;
 }
 
 .brand {
     display: inline-block;
     font-weight: 800;
     letter-spacing: .06em;
-    margin-bottom: 12px;
+    margin-bottom: 100px;
 }
 
 .nav {
@@ -49,28 +50,19 @@ a {
 
 .nav a {
     position: relative;
-    display: inline-block;
+    display: grid;
     background: #dddddd;
     border: 1px solid #dddddd;
     padding: 8px 10px;
     color: #000000;
     text-align: center;
     z-index: 0;
-}
-
-.nav a::before {
-    content: "";
-    position: absolute;
-    display: inline-block;
-    background: #dddddd;
-    border: 1px solid #dddddd;
-    padding: 8px 10px;
-    color: #000000;
-    text-align: center;
     transform-origin: center;
-    transform: rotate(0deg);
-    z-index: -1;
-    pointer-events: none;
+    will-change: transform;
+    overflow: hidden;
+    width: 200px;
+    min-height: 50px;
+    place-items: center;
 }
 
 .nav a.active {
@@ -101,12 +93,6 @@ a {
     grid-template-columns: repeat(2, minmax(220px, 1fr));
     gap: 16px;
     align-items: start;
-}
-
-.glance-grid .img-box img {
-    display: block;
-    width: 100%;
-    height: auto;
 }
 
 .gray-strip {
@@ -221,7 +207,7 @@ a {
     .nav {
         flex-direction: row;
         flex-wrap: wrap;
-        gap: 8px;
+        gap: 12px;
     }
 
     .content {
@@ -235,6 +221,10 @@ a {
 
     .ticker {
         height: 28px;
+    }
+
+    .nav a {
+        transform: none;
     }
 }
 
@@ -272,7 +262,7 @@ a {
 
 .frame {
     float: left;
-    width: clamp(160px, 35vw, 360px);
+    width: clamp(300px, 35vw, 460px);
     margin: 0 16px 12px 0;
 }
 
@@ -322,10 +312,6 @@ section::after {
     letter-spacing: .02em;
     text-align: center;
     text-transform: uppercase;
-}
-
-.nav a {
-    overflow: hidden;
 }
 
 .nav a.glitching::before,
@@ -460,3 +446,39 @@ body.page-glitch {
         animation: none !important;
     }
 }
+
+@media (min-width: 821px) {
+    .nav {
+        align-items: center;
+        gap: 28px;
+    }
+
+    .nav a:nth-child(1) {
+        transform: rotate(-8deg) translateX(-6px);
+    }
+
+    .nav a:nth-child(2) {
+        transform: rotate(0deg) translateX(0);
+    }
+
+    .nav a:nth-child(3) {
+        transform: rotate(8deg) translateX(6px);
+    }
+
+    .nav a:nth-child(4) {
+        transform: rotate(-4deg) translateX(-4px);
+    }
+}
+
+.fake {
+    float: left;
+    width: clamp(1170px, 35vw, 1340px);
+    margin: 10px 16px 24px 0 ;
+}
+
+ .fake img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid #e0e0e0;
+ }
