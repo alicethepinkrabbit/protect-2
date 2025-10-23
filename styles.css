@@ -500,11 +500,7 @@ body.page-glitch {
     }
 }
 
-.fake {
-    float: left;
-    width: clamp(200px, 90vw, 1340px);
-    margin: 10px 16px 24px 0 ;
-}
+
 
  .fake img {
     display: block;
@@ -512,3 +508,10 @@ body.page-glitch {
     height: auto;
     border: 1px solid #e0e0e0;
  }
+ .fake {
+  float: none;
+  width: 100%;
+  max-width: none;
+  margin: 10px auto 24px;
+}
+.glance-grid .fake { grid-column: 1 / -1; }
