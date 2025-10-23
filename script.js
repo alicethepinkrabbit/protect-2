@@ -85,7 +85,7 @@
             try {
                 switch (route) {
                     case "about":
-                        if (!reduced) await showOverlay("", 500);
+                        if (!reduced) await showOverlay("", 200);
                         window.location.href = href;
                         break;
                     case "fake":
@@ -95,7 +95,7 @@
                         window.location.href = href;
                         break;
                     case "glance":
-                        if (!reduced) await showOverlay("glance back", 1500);
+                        if (!reduced) await showOverlay("what are you thinking about?", 1500);
                         window.location.href = href;
                         break;
                     case "realistic":
