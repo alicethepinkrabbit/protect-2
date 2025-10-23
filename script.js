@@ -22,7 +22,7 @@
         }, ms));
     }
 
-    function buttonGlitch(el, ms = 600) {
+    function buttonGlitch(el, ms = 1000) {
         if (!el.hasAttribute('data-label')) el.setAttribute('data-label', el.textContent.trim());
         el.classList.add('glitching');
         return new Promise(resolve => setTimeout(() => {
